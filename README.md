@@ -12,14 +12,15 @@ This repository contains hands-on implementations of Docker across multiple back
 - Environment Variables (`.env`)
 
 ## 📁 Project Structure
-Docker/
-├── Hand-On/
-├── Node/
-├── Python/
-├── django-notes-app/
-├── two-tier-flask-app/
-├── .env
-└── README.md
+
+    Docker/
+    ├── Hand-On/
+    ├── Node/
+    ├── Python/
+    ├── django-notes-app/
+    ├── two-tier-flask-app/
+    ├── .env
+    └── README.md
 
 ## 🐳 Features
 - Containerization of multiple backend technologies
