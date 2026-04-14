@@ -1,0 +1,36 @@
+services:
+   minenode:
+        build:
+           context: .
+        ports:
+           - "3000:3000"
+        networks:
+           - minenet
+        environment:
+           - MONGO_URL=mongodb://mongo:27017/mydatabase
+           - PORT=3000
+        depends_on:
+           mongo:
+              condition: service_healthy
+
+   mongo:
+         image: mongo:latest
+         container_name: mongo
+         ports:
+           - "27019:27017"
+         networks:
+           - minenet
+         volumes:
+           - mongo-data:/data/db
+         restart: always
+         healthcheck:
+           test: ["CMD-SHELL", "mongosh --eval 'db.adminCommand(\"ping\").ok' --quiet | grep -q 1"]
+           interval: 10s
+           timeout: 5s
+           retries: 5
+           start_period: 40s
+
+volumes:
+   mongo-data:
+networks:
+   minenet:
